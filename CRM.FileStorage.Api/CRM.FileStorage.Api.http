@@ -1,0 +1,6 @@
+@CRM.FileStorage.Api_HostAddress = http://localhost:5046
+
+GET {{CRM.FileStorage.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

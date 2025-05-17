@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CRM.FileStorage.Api", "CRM.FileStorage.Api", "{F96AFBCB-41D5-4B84-A606-9B5A59D8DF62}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CRM.FileStorage.Application", "CRM.FileStorage.Application", "{9285C946-6741-4FCB-9A4D-5BDA54224691}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CRM.FileStorage.Domain", "CRM.FileStorage.Domain", "{48136E15-0C9A-4ACF-BB0A-25A0E9884C7A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CRM.FileStorage.Persistence", "CRM.FileStorage.Persistence", "{AB7FC8A5-9B13-4EA0-B85B-22A65AB1D8D0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CRM.FileStorage.Infrastructure", "CRM.FileStorage.Infrastructure", "{81D62E1A-0CCB-4EC8-8129-7C33CBD55C05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM.FileStorage.Api", "CRM.FileStorage.Api\CRM.FileStorage.Api.csproj", "{FF352D75-CE0A-470A-96B5-754B1532512E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM.FileStorage.Application", "CRM.FileStorage.Application\CRM.FileStorage.Application.csproj", "{30CAB374-1755-4455-82E9-707D74FFAAFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM.FileStorage.Domain", "CRM.FileStorage.Domain\CRM.FileStorage.Domain.csproj", "{D7B8A7FE-4E63-4436-86CA-A10FE768A4B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM.FileStorage.Infrastructure", "CRM.FileStorage.Infrastructure\CRM.FileStorage.Infrastructure.csproj", "{552C6853-0576-430F-B2D9-F10921855548}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM.FileStorage.Persistence", "CRM.FileStorage.Persistence\CRM.FileStorage.Persistence.csproj", "{E5258DEB-C5AC-4454-B108-3F12E5108FB0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FF352D75-CE0A-470A-96B5-754B1532512E} = {F96AFBCB-41D5-4B84-A606-9B5A59D8DF62}
+		{30CAB374-1755-4455-82E9-707D74FFAAFE} = {9285C946-6741-4FCB-9A4D-5BDA54224691}
+		{D7B8A7FE-4E63-4436-86CA-A10FE768A4B3} = {48136E15-0C9A-4ACF-BB0A-25A0E9884C7A}
+		{552C6853-0576-430F-B2D9-F10921855548} = {81D62E1A-0CCB-4EC8-8129-7C33CBD55C05}
+		{E5258DEB-C5AC-4454-B108-3F12E5108FB0} = {AB7FC8A5-9B13-4EA0-B85B-22A65AB1D8D0}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF352D75-CE0A-470A-96B5-754B1532512E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF352D75-CE0A-470A-96B5-754B1532512E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF352D75-CE0A-470A-96B5-754B1532512E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF352D75-CE0A-470A-96B5-754B1532512E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30CAB374-1755-4455-82E9-707D74FFAAFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30CAB374-1755-4455-82E9-707D74FFAAFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30CAB374-1755-4455-82E9-707D74FFAAFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30CAB374-1755-4455-82E9-707D74FFAAFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7B8A7FE-4E63-4436-86CA-A10FE768A4B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7B8A7FE-4E63-4436-86CA-A10FE768A4B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7B8A7FE-4E63-4436-86CA-A10FE768A4B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7B8A7FE-4E63-4436-86CA-A10FE768A4B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{552C6853-0576-430F-B2D9-F10921855548}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{552C6853-0576-430F-B2D9-F10921855548}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{552C6853-0576-430F-B2D9-F10921855548}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{552C6853-0576-430F-B2D9-F10921855548}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5258DEB-C5AC-4454-B108-3F12E5108FB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5258DEB-C5AC-4454-B108-3F12E5108FB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5258DEB-C5AC-4454-B108-3F12E5108FB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5258DEB-C5AC-4454-B108-3F12E5108FB0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
