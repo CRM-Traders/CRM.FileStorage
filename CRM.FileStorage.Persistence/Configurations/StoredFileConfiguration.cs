@@ -57,10 +57,17 @@ public class StoredFileConfiguration : AuditableEntityConfiguration<StoredFile>
 
         builder.Property(f => f.ExpirationTime);
 
+        builder.Property(f => f.Reference)
+            .HasMaxLength(200);
+
+        builder.Property(f => f.Description)
+            .HasMaxLength(1000);
+
         builder.HasIndex(f => f.UserId);
         builder.HasIndex(f => f.KycProcessId);
         builder.HasIndex(f => f.Status);
         builder.HasIndex(f => f.ExpirationTime);
+        builder.HasIndex(f => f.Reference);
         builder.HasIndex(f => new { f.Status, f.ExpirationTime });
 
         builder.HasOne(f => f.KycProcess)

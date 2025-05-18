@@ -16,4 +16,6 @@ public class StoredFileDto
     public Guid? KycProcessId { get; set; }
     public DateTimeOffset CreationTime { get; set; }
     public string FileUrl { get; set; } = string.Empty;
+    public string? Reference { get; set; }
+    public string? Description { get; set; }
 }

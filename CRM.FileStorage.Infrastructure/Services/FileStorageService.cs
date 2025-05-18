@@ -17,7 +17,16 @@ public class FileStorageService(
     {
         bucketName = string.IsNullOrEmpty(bucketName) ? "default" : bucketName;
 
-        var directory = Path.Combine(_settings.BasePath, _settings.TempDirectory, bucketName);
+        string directory;
+        if (!string.IsNullOrEmpty(_settings.TempBasePath))
+        {
+            directory = Path.Combine(_settings.TempBasePath, bucketName);
+        }
+        else
+        {
+            directory = Path.Combine(_settings.BasePath, _settings.TempDirectory, bucketName);
+        }
+
         Directory.CreateDirectory(directory);
 
         var uniqueFileName = $"{Guid.NewGuid()}{Path.GetExtension(fileName)}";
@@ -44,8 +53,25 @@ public class FileStorageService(
     {
         permanentBucket = string.IsNullOrEmpty(permanentBucket) ? "default" : permanentBucket;
 
-        var tempDirectory = Path.Combine(_settings.BasePath, _settings.TempDirectory, tempBucket);
-        var permanentDirectory = Path.Combine(_settings.BasePath, _settings.PermanentDirectory, permanentBucket);
+        string tempDirectory;
+        if (!string.IsNullOrEmpty(_settings.TempBasePath))
+        {
+            tempDirectory = Path.Combine(_settings.TempBasePath, tempBucket);
+        }
+        else
+        {
+            tempDirectory = Path.Combine(_settings.BasePath, _settings.TempDirectory, tempBucket);
+        }
+
+        string permanentDirectory;
+        if (!string.IsNullOrEmpty(_settings.PermanentBasePath))
+        {
+            permanentDirectory = Path.Combine(_settings.PermanentBasePath, permanentBucket);
+        }
+        else
+        {
+            permanentDirectory = Path.Combine(_settings.BasePath, _settings.PermanentDirectory, permanentBucket);
+        }
 
         Directory.CreateDirectory(permanentDirectory);
 
@@ -55,11 +81,9 @@ public class FileStorageService(
 
         try
         {
-            using var tempFileStream = new FileStream(tempFilePath, FileMode.Open);
-            using var permanentFileStream = new FileStream(permanentFilePath, FileMode.Create);
+            await using var tempFileStream = new FileStream(tempFilePath, FileMode.Open);
+            await using var permanentFileStream = new FileStream(permanentFilePath, FileMode.Create);
             await tempFileStream.CopyToAsync(permanentFileStream);
-
-            // We don't delete the temp file here - it will be cleaned up by the background service
 
             logger.LogInformation("File {FileName} moved from temporary to permanent storage at {FilePath}", fileName,
                 permanentFilePath);
@@ -77,16 +101,40 @@ public class FileStorageService(
     {
         try
         {
-            var directory = Path.Combine(_settings.BasePath,
-                bucketName.StartsWith("kyc-temp") ? _settings.TempDirectory : _settings.PermanentDirectory,
-                bucketName);
+            string directory;
+
+
+            bool isTemp = bucketName.StartsWith("kyc-temp") || bucketName.Contains("temp");
+
+            if (isTemp)
+            {
+                if (!string.IsNullOrEmpty(_settings.TempBasePath))
+                {
+                    directory = Path.Combine(_settings.TempBasePath, bucketName);
+                }
+                else
+                {
+                    directory = Path.Combine(_settings.BasePath, _settings.TempDirectory, bucketName);
+                }
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(_settings.PermanentBasePath))
+                {
+                    directory = Path.Combine(_settings.PermanentBasePath, bucketName);
+                }
+                else
+                {
+                    directory = Path.Combine(_settings.BasePath, _settings.PermanentDirectory, bucketName);
+                }
+            }
 
             var fullPath = Path.Combine(directory, filePath);
 
             if (File.Exists(fullPath))
             {
                 File.Delete(fullPath);
-                logger.LogInformation("File deleted from storage: {FilePath}", fullPath);
+                logger.LogInformation("File deleted: {FilePath}", fullPath);
             }
 
             return Task.CompletedTask;
@@ -102,9 +150,32 @@ public class FileStorageService(
     {
         try
         {
-            var directory = Path.Combine(_settings.BasePath,
-                bucketName.StartsWith("kyc-temp") ? _settings.TempDirectory : _settings.PermanentDirectory,
-                bucketName);
+            string directory;
+ 
+            bool isTemp = bucketName.StartsWith("kyc-temp") || bucketName.Contains("temp");
+
+            if (isTemp)
+            {
+                if (!string.IsNullOrEmpty(_settings.TempBasePath))
+                {
+                    directory = Path.Combine(_settings.TempBasePath, bucketName);
+                }
+                else
+                {
+                    directory = Path.Combine(_settings.BasePath, _settings.TempDirectory, bucketName);
+                }
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(_settings.PermanentBasePath))
+                {
+                    directory = Path.Combine(_settings.PermanentBasePath, bucketName);
+                }
+                else
+                {
+                    directory = Path.Combine(_settings.BasePath, _settings.PermanentDirectory, bucketName);
+                }
+            }
 
             var fullPath = Path.Combine(directory, filePath);
 

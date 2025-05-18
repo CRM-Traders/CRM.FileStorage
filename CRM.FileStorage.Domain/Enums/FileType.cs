@@ -6,5 +6,16 @@ public enum FileType
     IdBack = 2,
     PassportMain = 3,
     FacePhoto = 4,
-    Other = 5
+
+    Document = 10,
+    Image = 11,
+    Contract = 12,
+    Invoice = 13,
+    Report = 14,
+    Presentation = 15,
+    Archive = 16,
+    Video = 17,
+    Audio = 18,
+
+    Other = 99
 }

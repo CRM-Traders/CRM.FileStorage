@@ -145,6 +145,10 @@ namespace CRM.FileStorage.Persistence.Migrations
                         .HasMaxLength(45)
                         .HasColumnType("character varying(45)");
 
+                    b.Property<string>("Description")
+                        .HasMaxLength(1000)
+                        .HasColumnType("character varying(1000)");
+
                     b.Property<DateTimeOffset?>("ExpirationTime")
                         .HasColumnType("timestamp with time zone");
 
@@ -188,6 +192,10 @@ namespace CRM.FileStorage.Persistence.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("character varying(255)");
 
+                    b.Property<string>("Reference")
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
+
                     b.Property<int>("Status")
                         .HasColumnType("integer");
 
@@ -204,6 +212,8 @@ namespace CRM.FileStorage.Persistence.Migrations
                     b.HasIndex("ExpirationTime");
 
                     b.HasIndex("KycProcessId");
+
+                    b.HasIndex("Reference");
 
                     b.HasIndex("Status");
 

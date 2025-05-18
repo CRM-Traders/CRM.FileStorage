@@ -13,14 +13,17 @@ public static class DependencyInjection
     {
         services.Configure<FileStorageSettings>(configuration.GetSection(nameof(FileStorageSettings)));
         services.Configure<QrCodeSettings>(configuration.GetSection(nameof(QrCodeSettings)));
-        
+        services.Configure<JwtOptions>(configuration.GetSection(nameof(JwtOptions)));
+        services.Configure<MinioSettings>(configuration.GetSection(nameof(MinioSettings)));
+
         services.AddSingleton<ICurrentUserContext, CurrentUserContext>();
-        services.AddSingleton<IFileValidationService, FileValidationService>(); 
-        
-        services.AddScoped<IFileStorageService, FileStorageService>();
-        
+        services.AddSingleton<IFileValidationService, FileValidationService>();
+        services.AddSingleton<IJwtTokenService, JwtTokenService>();
+
+        services.AddScoped<IFileStorageService, FileStorageServiceFactory>();
+
         services.AddHostedService<ExpiredFilesCleanupService>();
-        
+
         return services;
     }
 }

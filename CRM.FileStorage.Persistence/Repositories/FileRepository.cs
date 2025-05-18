@@ -27,6 +27,13 @@ public class FileRepository(FileStorageDbContext context) : IFileRepository
             .ToListAsync();
     }
 
+    public async Task<IEnumerable<StoredFile>> GetFilesByReferenceAsync(string reference)
+    {
+        return await context.Files
+            .Where(f => f.Reference == reference)
+            .ToListAsync();
+    }
+
     public async Task<IEnumerable<StoredFile>> GetExpiredTemporaryFilesAsync(DateTimeOffset olderThan)
     {
         return await context.Files

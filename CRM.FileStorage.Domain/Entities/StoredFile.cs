@@ -19,6 +19,8 @@ public class StoredFile : AuditableEntity
     public KycProcess? KycProcess { get; private set; }
     public DateTimeOffset CreationTime { get; private set; }
     public DateTimeOffset? ExpirationTime { get; private set; }
+    public string? Reference { get; private set; }
+    public string? Description { get; private set; }
 
     private StoredFile()
     {
@@ -84,5 +86,15 @@ public class StoredFile : AuditableEntity
         return Status == FileStatus.Temporary &&
                ExpirationTime.HasValue &&
                ExpirationTime.Value < DateTimeOffset.UtcNow;
+    }
+
+    public void SetReference(string reference)
+    {
+        Reference = reference;
+    }
+
+    public void SetDescription(string description)
+    {
+        Description = description;
     }
 }
